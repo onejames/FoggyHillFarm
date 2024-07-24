@@ -1,0 +1,94 @@
+{
+    "id": 329678821,
+    "title": "Blueberry Jam",
+    "handle": "honey",
+    "description": "<p>Indulge in a taste of pure luxury with our bespoke honey jam, a delightful marriage of nature's finest ingredients, crafted to your unique desires. Unlike mass-produced jams, this isn't just any spread on your toast. It's a harmonious blend of flavor, a symphony composed especially for you.</p><p>Imagine sun-kissed honey, its golden nectar whispering of summer meadows, gently simmered with the finest seasonal fruits. But that's just the first movement in this delightful concerto. Bespoke honey jam allows you to weave in your favorite notes. Do you crave a burst of tart berries or a touch of fragrant citrus? Perhaps a whisper of warming spice or a decadent swirl of chocolate for a truly decadent finish? The choice is yours to conduct.</p><p>For the health-conscious connoisseur, we offer options to reduce sugar or use natural sweeteners like maple syrup or dates. And because it's bespoke, forget about unwanted additives or preservatives. This is pure, handcrafted indulgence in every jar.</p><p>Bespoke honey jam isn't just for breakfast. It's a versatile culinary companion, ready to elevate your culinary creations. Imagine drizzling it over a warm brie for a delightful cheese board appetizer, or swirling it into creamy yogurt for a luxurious afternoon treat. It can add a touch of gourmet flair to your charcuterie platter or be the secret ingredient in a homemade vinaigrette.</p><p>So ditch the ordinary and embrace the extraordinary. Bespoke honey jam is a symphony of natural sweetness, a reflection of your individuality, and a delicious way to add a touch of magic to every meal.</p>",
+    "published_at": "2024-07-12T16:28:11-04:00",
+    "created_at": "2014-06-12T16:28:13-04:00",
+    "vendor": "Shopify",
+    "type": "Jam",
+    "tags": [
+      "Jam"
+    ],
+    "price": 12.90,
+    "price_min": 12.90,
+    "price_max": 12.90,
+    "available": true,
+    "price_varies": false,
+    "compare_at_price": null,
+    "compare_at_price_min": 0,
+    "compare_at_price_max": 0,
+    "compare_at_price_varies": false,
+    "variants": [
+      {
+        "id": 794864229,
+        "title": "4oz",
+        "options": [
+          "4oz"
+        ],
+        "option1": "4oz",
+        "option2": null,
+        "option3": null,
+        "price": 6.00,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738645"
+      },
+      {
+        "id": 794864233,
+        "title": "8oz",
+        "options": [
+          "8oz"
+        ],
+        "option1": "8oz",
+        "option2": null,
+        "option3": null,
+        "price": 9.00,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738657"
+      },
+      {
+        "id": 794864237,
+        "title": "12oz",
+        "options": [
+          "12oz"
+        ],
+        "option1": "12oz",
+        "option2": null,
+        "option3": null,
+        "price": 12.90,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738673"
+      }
+    ],
+    "images": [
+      "/img/products/blueberry-jam2.jpeg",
+      "/img/products/blueberry-jam3.jpeg"
+    ],
+    "featured_image": "/img/products/blueberry-jam.jpeg",
+    "options": [
+      {
+        "name": "Size",
+        "position": 1
+      }
+    ],
+    "url": "/store/blueberry-jam"
+  }
+  

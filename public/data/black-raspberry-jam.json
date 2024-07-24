@@ -1,0 +1,96 @@
+{
+    "id": 329678821,
+    "title": "Black-raspberry Jam",
+    "handle": "black-raspberry-jam",
+    "description": "<p>Dive into the world of bespoke black raspberry jam, a taste sensation unlike any other. Forget the mass-produced, one-size-fits-all spreads. This is a symphony of deep, rich flavor, customized to tantalize your taste buds.</p><p>Imagine plump, juicy black raspberries, bursting with a unique blend of sweet and tart, simmered to perfection. But that's just the beginning of your bespoke adventure. This jam allows you to weave in your favorite flavors. Do you crave a touch of zesty lemon or a hint of warming vanilla? Perhaps a splash of ruby port for a touch of elegance, or a handful of chopped dark chocolate for a truly decadent experience? The choice is yours to make.</p><p>For the health-conscious connoisseur, we offer options to reduce sugar or use natural sweeteners like maple syrup. And because it's bespoke, forget about unwanted additives or preservatives. This is pure, handcrafted indulgence in every jar.</p><p>Bespoke black raspberry jam isn't just for toast. It's a versatile culinary companion, ready to elevate your creations. Imagine swirling it into creamy yogurt for a delightful breakfast parfait, or using it as a glaze for grilled lamb chops. It can add a gourmet touch to your cheese board or be the secret ingredient in a homemade vinaigrette.</p><p>So ditch the ordinary and embrace the extraordinary. Bespoke black raspberry jam is a celebration of unique flavor, a reflection of your individuality, and a delicious way to add a touch of luxury to every meal.</p>",
+    "published_at": "2014-06-12T16:28:11-04:00",
+    "created_at": "2014-06-12T16:28:13-04:00",
+    "vendor": "Shopify",
+    "type": "Jam",
+    "tags": [
+      "Jam"
+    ],
+    "price": 12.90,
+    "price_min": 12.90,
+    "price_max": 12.90,
+    "available": true,
+    "price_varies": false,
+    "compare_at_price": null,
+    "compare_at_price_min": 0,
+    "compare_at_price_max": 0,
+    "compare_at_price_varies": false,
+    "variants": [
+      {
+        "id": 794864229,
+        "title": "4oz",
+        "options": [
+          "4oz"
+        ],
+        "option1": "4oz",
+        "option2": null,
+        "option3": null,
+        "price": 6.00,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738645"
+      },
+      {
+        "id": 794864233,
+        "title": "8oz",
+        "options": [
+          "8oz"
+        ],
+        "option1": "8oz",
+        "option2": null,
+        "option3": null,
+        "price": 9.00,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738657"
+      },
+      {
+        "id": 794864237,
+        "title": "12oz",
+        "options": [
+          "12oz"
+        ],
+        "option1": "12oz",
+        "option2": null,
+        "option3": null,
+        "price": 12.90,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738673"
+      }
+    ],
+    "images": [
+      "/img/products/black-raspberry-jam2.jpeg",
+      "/img/products/black-raspberry-jam3.jpeg",
+      "/img/products/black-raspberry-jam4.jpeg",
+      "/img/products/black-raspberry-jam5.jpeg"
+    ],
+    "featured_image": "/img/products/black-raspberry-jam.jpeg",
+    "options": [
+      {
+        "name": "Size",
+        "position": 1
+      }
+    ],
+    "url": "/store/black-raspberry-jam"
+  }
+  

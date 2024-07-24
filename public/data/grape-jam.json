@@ -1,0 +1,96 @@
+{
+    "id": 329678821,
+    "title": "Grape Jam",
+    "handle": "black-berry-jam",
+    "description": "<p>Uncork a world of sunshine with our bespoke grape jam, a delightful spread crafted just for you. Unlike its mass-produced cousins, this isn't your average grape jelly. It's a vibrant tapestry of flavor, meticulously designed to tantalize your taste buds.</p><p>Imagine sun-kissed grapes, bursting with the essence of summer, slow-cooked to create a symphony of sweet and tart. But the melody doesn't end there. Bespoke grape jam lets you orchestrate the flavors. Do you yearn for a touch of floral lavender or a whisper of peppery spice? Perhaps a splash of ruby port for a touch of sophistication, or a handful of plump, toasted walnuts for added texture? The composition is yours to create.</p><p>For the health-conscious maestro, we offer options to reduce sugar or use natural sweeteners. And because it's bespoke, forget about unwanted additives or preservatives. This is pure, handcrafted indulgence in every jar.</p><p>Bespoke grape jam isn't just a breakfast staple, it's a culinary chameleon. Imagine swirling it into creamy yogurt or dolloping it onto a warm brie for an unexpected appetizer. It can elevate a cheese board or add a touch of gourmet flair to your next charcuterie platter.</p><p>So ditch the mundane and embrace the extraordinary. Bespoke grape jam is a taste of summer captured, a reflection of your individuality, and a delicious way to add a touch of magic to every meal.</p>",
+    "published_at": "2014-06-12T16:28:11-04:00",
+    "created_at": "2014-06-12T16:28:13-04:00",
+    "vendor": "Shopify",
+    "type": "Jam",
+    "tags": [
+      "Jam"
+    ],
+    "price": 12.90,
+    "price_min": 12.90,
+    "price_max": 12.90,
+    "available": true,
+    "price_varies": false,
+    "compare_at_price": null,
+    "compare_at_price_min": 0,
+    "compare_at_price_max": 0,
+    "compare_at_price_varies": false,
+    "variants": [
+      {
+        "id": 794864229,
+        "title": "4oz",
+        "options": [
+          "4oz"
+        ],
+        "option1": "4oz",
+        "option2": null,
+        "option3": null,
+        "price": 6.00,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738645"
+      },
+      {
+        "id": 794864233,
+        "title": "8oz",
+        "options": [
+          "8oz"
+        ],
+        "option1": "8oz",
+        "option2": null,
+        "option3": null,
+        "price": 9.00,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738657"
+      },
+      {
+        "id": 794864237,
+        "title": "12oz",
+        "options": [
+          "12oz"
+        ],
+        "option1": "12oz",
+        "option2": null,
+        "option3": null,
+        "price": 12.90,
+        "weight": 0,
+        "compare_at_price": null,
+        "inventory_management": "shopify",
+        "available": true,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "barcode": "49738673"
+      }
+    ],
+    "images": [
+      "/img/products/grape-jam2.jpeg",
+      "/img/products/grape-jam3.jpeg",
+      "/img/products/grape-jam4.jpeg",
+      "/img/products/grape-jam5.jpeg"
+    ],
+    "featured_image": "/img/products/grape-jam.jpeg",
+    "options": [
+      {
+        "name": "Size",
+        "position": 1
+      }
+    ],
+    "url": "/store/grape-jam"
+  }
+  
