@@ -38,7 +38,7 @@ export default function Home() {
       </div>
 
       <div>
-        <section className="grid grid-cols-3 m-4 p-10 bg-slate-100">
+        <section className="grid sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 m-4 p-10 bg-slate-100">
             <p className="p-3" >
               This jam is bursting with flavor! Made with wild Maine blueberries, it has a delightful balance of sweetness and tartness. The reviews consistently mention the intense blueberry flavor and the perfect amount of sugar [1]. Spread it on toast, pancakes, or enjoy it on its own for a delicious treat.
             </p>

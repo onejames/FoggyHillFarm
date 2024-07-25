@@ -4,7 +4,10 @@ import "./globals.css";
 
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Alert from './components/Alert'
 import GoogleAnaltyics from './components/GoogleAnalytics'
+
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +25,10 @@ export default function RootLayout({
     <html lang="en" data-theme="fantsay">
       <body className="flex justify-center max-w-screen-xl flex-col mx-auto" >
 
+        <Alert />
+        <br/>
+
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_MEASUREMENT_ID} />
         <GoogleAnaltyics />
         <Header />
 
