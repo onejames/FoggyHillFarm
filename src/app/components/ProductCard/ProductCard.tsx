@@ -1,5 +1,7 @@
 import React from 'react'
+
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { ProductModel } from '../../interfaces/ProductModel';
 import AddToCart from './AddToCart';
@@ -10,14 +12,12 @@ const ProductCard = ({product}: {product: ProductModel}) => {
   product.published_at = new Date(product.published_at);
 
   return (
-    <div className='flex justify-center m-4'>
+    <div key={product.id} className='flex justify-center m-4'>
         <div className="card bg-base-100 w-96 shadow-xl">
 
           <figure>
             <Link href={product.url}>
-              <img
-                src={product.featured_image}
-                alt="Product" />
+              <Image src={product.featured_image} alt="Product" width="600" height="600" />
             </Link>
           </figure>
 
@@ -34,7 +34,7 @@ const ProductCard = ({product}: {product: ProductModel}) => {
 
             <div className="card-actions justify-end">
               {product.tags.map( (tag) => 
-                <div className="badge badge-outline" >{tag}</div>
+                <div  key={tag}  className="badge badge-outline" >{tag}</div>
                )}
             </div>
           </div>

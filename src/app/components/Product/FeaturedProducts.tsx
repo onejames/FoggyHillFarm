@@ -17,7 +17,7 @@ const FeaturedProducts = async () => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 my-4">
-            {featuredProducts.map((product: ProductModel) => <ProductCard product={product} />)}
+            {featuredProducts.map((product: ProductModel) => <ProductCard key={product.id} product={product} />)}
         </div>
     )
 }

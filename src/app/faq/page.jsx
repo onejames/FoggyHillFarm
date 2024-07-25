@@ -12,14 +12,14 @@ const faq = () => {
                     <div className="mb-10">
                         <h3 className="flex items-center mb-4 text-lg font-medium text-gray-900 ">
                             <svg className="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
-                            What do you mean by "Figma assets"?
+                            What do you mean by Figma assets?
                         </h3>
                         <p className="text-gray-500 ">You will have access to download the full Figma project including all of the pages, the components, responsive pages, and also the icons, illustrations, and images included in the screens.</p>
                     </div>
                     <div className="mb-10">                        
                         <h3 className="flex items-center mb-4 text-lg font-medium text-gray-900 ">
                             <svg className="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
-                            What does "lifetime access" exactly mean?
+                            What does lifetime access exactly mean?
                         </h3>
                         <p className="text-gray-500 ">Once you have purchased either the design, code, or both packages, you will have access to all of the future updates based on the roadmap, free of charge.</p>
                     </div>
@@ -28,15 +28,15 @@ const faq = () => {
                             <svg className="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
                             How does support work?
                         </h3>
-                        <p className="text-gray-500 ">We're aware of the importance of well qualified support, that is why we decided that support will only be provided by the authors that actually worked on this project.</p>
-                        <p className="text-gray-500 ">Feel free to <a href="#" className="font-medium underline text-primary-600 hover:no-underline" target="_blank" rel="noreferrer">contact us</a> and we'll help you out as soon as we can.</p>
+                        <p className="text-gray-500 ">Were aware of the importance of well qualified support, that is why we decided that support will only be provided by the authors that actually worked on this project.</p>
+                        <p className="text-gray-500 ">Feel free to <a href="#" className="font-medium underline text-primary-600 hover:no-underline" target="_blank" rel="noreferrer">contact us</a> and well help you out as soon as we can.</p>
                     </div>
                     <div className="mb-10">
                         <h3 className="flex items-center mb-4 text-lg font-medium text-gray-900 ">
                             <svg className="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
                             I want to build more than one project. Is that allowed?
                         </h3>
-                        <p className="text-gray-500 ">You can use Windster for an unlimited amount of projects, whether it's a personal website, a SaaS app, or a website for a client. As long as you don't build a product that will directly compete with Windster either as a UI kit, theme, or template, it's fine.</p>
+                        <p className="text-gray-500 ">You can use Windster for an unlimited amount of projects, whether its a personal website, a SaaS app, or a website for a client. As long as you dont build a product that will directly compete with Windster either as a UI kit, theme, or template, its fine.</p>
                         <p className="text-gray-500 ">Find out more information by <a href="#" className="font-medium underline text-primary-600 hover:no-underline">reading the license</a>.</p>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ const faq = () => {
                     <div className="mb-10">
                         <h3 className="flex items-center mb-4 text-lg font-medium text-gray-900 ">
                             <svg className="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
-                            What does "free updates" include?
+                            What does free updates include?
                         </h3>
                         <p className="text-gray-500 ">The free updates that will be provided is based on the <a href="#" className="font-medium underline text-primary-600 hover:no-underline">roadmap</a> that we have laid out for this project. It is also possible that we will provide extra updates outside of the roadmap as well.</p>
                     </div>

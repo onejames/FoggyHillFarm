@@ -30,7 +30,7 @@ const product = async ({ params }: { params: { slug: string } }) => {
             <select className="select select-bordered w-full max-w-xs my-4">
                 <option disabled selected>Size:</option>
                 {product.variants.map((variants: variantsModel, i: number) => 
-                    <option disabled={variants.available === true ? false : true  } value={variants.id}>{variants.title}</option>    
+                    <option key={variants.id} disabled={variants.available === true ? false : true  } value={variants.id}>{variants.title}</option>    
                 )}
             </select>
 
@@ -41,7 +41,7 @@ const product = async ({ params }: { params: { slug: string } }) => {
             <div className="carousel carousel-center rounded-box my-4">
                 {product.images.map(
                     (img: string, i: number) => 
-                        <div className="carousel-item">
+                        <div key={i} className="carousel-item">
                             <Image key={i} src={img} alt="Product" width="400" height="600"/> 
                         </div>
                     )

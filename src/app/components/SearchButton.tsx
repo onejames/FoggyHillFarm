@@ -4,7 +4,7 @@ import React from 'react'
 
 const SearchButton = () => {
   return (
-    <button className="btn btn-ghost btn-circle" onClick={()=>document.getElementById('search_modal').showModal()}>
+    <button className="btn btn-ghost btn-circle" onClick={()=>console.log('document.getElementById(\'search_modal\').showModal()')}>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"

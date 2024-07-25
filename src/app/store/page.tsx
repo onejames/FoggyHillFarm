@@ -37,7 +37,7 @@ const products = async () => {
       <p>{JSON.stringify(products)}</p> */}
       <h2 className='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white'>Products</h2>
       <div className="grid lg:grid-cols-3 ">
-          {products.map((product: ProductModel) => <ProductCard product={product} />)}
+          {products.map((product: ProductModel) => <ProductCard key={product.id} product={product} />)}
       </div>
     </div>
   )
