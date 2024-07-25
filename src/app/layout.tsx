@@ -28,7 +28,7 @@ export default function RootLayout({
         <Alert />
         <br/>
 
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_MEASUREMENT_ID} />
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_MEASUREMENT_ID!} />
         <GoogleAnaltyics />
         <Header />
 
