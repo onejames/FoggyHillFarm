@@ -20,7 +20,7 @@ export async function POST(
 
   try {
     client.send(mail);
-    console.log('foo');
+
     return NextResponse.json({ message: "Success: email was sent" });
   } catch (error) {
     console.log(error);
