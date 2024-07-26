@@ -76,11 +76,9 @@ const Header = () => {
             </div>
             </div>
             <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle placeholder avatar">
+                <div className="bg-neutral text-neutral-content w-8 rounded-full">
+                    <span className="text-xs">JL</span>
                 </div>
             </div>
             <ul

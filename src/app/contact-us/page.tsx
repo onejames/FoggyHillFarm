@@ -2,7 +2,7 @@
 
 import React, { useState, FormEvent } from 'react'
 
-const contactUs = () => {
+const ContactUs = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
@@ -89,4 +89,4 @@ const contactUs = () => {
   )
 }
 
-export default contactUs
+export default ContactUs
