@@ -1,5 +1,5 @@
 {
-    "id": 329678821,
+    "id": 100021,
     "title": "Blackberry Jam",
     "handle": "black-berry-jam",
     "description": "<p>Dive into the world of bespoke blackberry jam, a luxurious taste experience crafted to your wildest desires. Unlike mass-produced jams, this isn't just any spread. This is a symphony of flavor, customized to your unique palate.</p><p>Imagine plump, juicy blackberries, bursting with sunshine and just-ripened sweetness, simmered to perfection. But that's just the beginning. Bespoke jam allows you to weave in your favorite flavors.  Do you crave a hint of zesty lemon or a touch of warming vanilla? Perhaps a splash of ruby port for a touch of elegance?  The choice is yours.</p><p>For the health-conscious, there are options to reduce sugar or use natural sweeteners. And because it's bespoke, forget about unwanted additives or preservatives. This is pure, handcrafted indulgence in every jar.</p><p>Bespoke blackberry jam isn't just a breakfast spread, it's a versatile culinary companion. Imagine spooning it over cheesecake or vanilla ice cream for a decadent dessert.  It can elevate a cheese board or add a touch of gourmet flair to your charcuterie.</p><p>So ditch the ordinary and embrace the extraordinary. Bespoke blackberry jam is a taste of luxury, a reflection of your individuality, and a delicious way to elevate every meal.</p>",
@@ -21,7 +21,7 @@
     "compare_at_price_varies": false,
     "variants": [
       {
-        "id": 794864229,
+        "id": 100022,
         "title": "4oz",
         "options": [
           "4oz"
@@ -40,7 +40,7 @@
         "barcode": "49738645"
       },
       {
-        "id": 794864233,
+        "id": 100024,
         "title": "8oz",
         "options": [
           "8oz"
@@ -59,7 +59,7 @@
         "barcode": "49738657"
       },
       {
-        "id": 794864237,
+        "id": 100024,
         "title": "12oz",
         "options": [
           "12oz"
