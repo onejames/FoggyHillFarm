@@ -11,6 +11,7 @@ const CartWidget = () => {
     const [value] = useLocalStorage("cartCount", 0);
     const [cartCount, setCartCount] = useState(value);
 
+    // @ts-ignore: Parameter 'e' implicitly has an 'any' type.ts(7006)
     const cartCountUpdate = useCallback(e => {
         setCartCount(e.detail.value);
     }, []);

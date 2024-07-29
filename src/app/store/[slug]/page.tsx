@@ -35,7 +35,7 @@ const product = async ({ params }: { params: { slug: string } }) => {
             </select>
 
             <br />
-            <AddToCart id={product.id} />
+            <AddToCart product={product} />
 
             <br />
             <div className="carousel carousel-center rounded-box my-4">

@@ -39,7 +39,7 @@ const ProductCard = ({product}: {product: ProductModel}) => {
             </div>
           </div>
 
-          <AddToCart id={product.id} />
+          <AddToCart product={product} />
 
         </div>
     </div>
