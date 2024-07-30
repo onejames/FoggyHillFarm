@@ -5,8 +5,8 @@ import Image from 'next/image'
 
 import AddToCart from '../../components/ProductCard/AddToCart';
 
-import { ProductModel } from '../../interfaces/ProductModel';
-import { variantsModel } from '../../interfaces/ProductModel';
+import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
+import { CartModel } from '../../interfaces/CartModel';
 
 const product = async ({ params }: { params: { slug: string } }) => {
 
@@ -25,14 +25,6 @@ const product = async ({ params }: { params: { slug: string } }) => {
             <div>Price: {product.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</div>
 
             <div className='my-6 product-description' dangerouslySetInnerHTML={{__html: product.description}}></div>
-
-            <br />
-            <select className="select select-bordered w-full max-w-xs my-4">
-                <option disabled selected>Size:</option>
-                {product.variants.map((variants: variantsModel, i: number) => 
-                    <option key={variants.id} disabled={variants.available === true ? false : true  } value={variants.id}>{variants.title}</option>    
-                )}
-            </select>
 
             <br />
             <AddToCart product={product} />
