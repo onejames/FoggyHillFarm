@@ -1,4 +1,3 @@
-
 import { promises as fs } from 'fs';
 import { readdirSync } from 'fs';
 
@@ -24,11 +23,15 @@ const products = async () => {
   products.push(JSON.parse(file5));
   products.push(JSON.parse(file6));
 
+  // fetch('/api/products')
+  // .then((res) => res.json())
+  // .then((data) => {
+  //   products = JSON.parse(data)
+  // })
+
   return (
     <div>
-      {/* <p>{JSON.stringify(files)}</p>
-      <p>{JSON.stringify(products)}</p> */}
-      <h2 className='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white'>Products</h2>
+      <h2 className='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl'>Products</h2>
       <div className="grid lg:grid-cols-3 ">
           {products.map((product: ProductModel) => <ProductCard key={product.id} product={product} />)}
       </div>

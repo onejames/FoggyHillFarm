@@ -14,6 +14,8 @@ const AddToCart = ({product}: {product: ProductModel}) => {
 
   const diag = useRef<HTMLDialogElement>(null);  // HTMLDialogElement
 
+  const cart = new CartModel();
+
   function addToCart (product: ProductModel) {
     if (optionValue == 0) {
       diag.current!.showModal();
@@ -26,9 +28,7 @@ const AddToCart = ({product}: {product: ProductModel}) => {
       }
     })!;
 
-    const cart = new CartModel();
-
-    setVariants(cart.addVariant(variants, variant));
+    setVariants(cart.addVariant(getVariants(), variant));
   }
 
   return (
@@ -39,7 +39,7 @@ const AddToCart = ({product}: {product: ProductModel}) => {
         value={optionValue}
         onChange={(e) => { setOptionValue(Number(e.target.value)); }}
         >
-        <option disabled value="0" selected>Size:</option>
+        <option disabled value="0" >Size:</option>
         {product.variants.map((variants: VariantModel, i: number) => 
             <option key={variants.id} disabled={variants.available === true ? false : true  } value={variants.id}>{variants.title}</option>    
         )}

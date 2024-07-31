@@ -13,13 +13,13 @@ const CartWidget = () => {
     const cartModel = new CartModel();
 
     const [variants, setVariants, getVariants] = useLocalStorage("cart", []);
-    const [quantity, setQuantity] = useState(cartModel.calculateCartQuantity(getVariants()));
-    const [total, setTotal] = useState(cartModel.calculateCartTotal(getVariants()));
+    const [quantity, setQuantity] = useState(cartModel.calculateCartQuantity(variants));
+    const [total, setTotal] = useState(cartModel.calculateCartTotal(variants));
 
     // @ts-ignore: Parameter 'e' implicitly has an 'any' type.ts(7006)
     const cartUpdate = useCallback(e => {
-        setQuantity(cartModel.calculateCartQuantity(getVariants()));
-        setTotal(cartModel.calculateCartTotal(getVariants()));
+        setQuantity(cartModel.calculateCartQuantity(e.detail.value));
+        setTotal(cartModel.calculateCartTotal(e.detail.value));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

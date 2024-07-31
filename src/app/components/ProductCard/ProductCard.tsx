@@ -17,7 +17,7 @@ const ProductCard = ({product}: {product: ProductModel}) => {
 
           <figure>
             <Link href={product.url}>
-              <Image src={product.featured_image} alt="Product" width="600" height="600" />
+              <Image src={product.featured_image} alt="Product" width="550" height="550" />
             </Link>
           </figure>
 

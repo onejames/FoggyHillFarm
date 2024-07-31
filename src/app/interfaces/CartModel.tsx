@@ -2,10 +2,6 @@ import { VariantModel } from "./ProductModel"
 
 export class CartModel {
     addVariant(variants: VariantModel[], val: VariantModel) {
-        if (!variants.length) {
-            return [val];
-        }
-
         let found = false;
 
         variants.filter((item, i) => {
@@ -35,6 +31,22 @@ export class CartModel {
         });
 
         return variants;
+    }
+
+    increaseVariant(variants: VariantModel[], val: VariantModel) {
+        variants.filter((item, i) => {
+            if (item.id == val.id) {
+                variants[i].ammountInCart = item.ammountInCart + 1;
+            }
+        });
+    }
+
+    decreaseVariant(variants: VariantModel[], val: VariantModel) {
+        variants.filter((item, i) => {
+            if (item.id == val.id) {
+                variants[i].ammountInCart = item.ammountInCart - 1;
+            }
+        });
     }
 
     calculateCartQuantity(variants: VariantModel[]) {

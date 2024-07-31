@@ -31,16 +31,20 @@ const Cart = () => {
       })
   }, [])
  
-  if (isLoading) return <p>Loading...</p>
-  if (!products) return <p>No profile data</p>
+  if (isLoading) return (
+    <div>
+        <span className="loading loading-ball loading-xs"></span>
+        <span className="loading loading-ball loading-sm"></span>
+        <span className="loading loading-ball loading-md"></span>
+        <span className="loading loading-ball loading-lg"></span>
+    </div>
+  )
 
   return (
     <div>
-      <h1>Cart</h1>
-
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-500">
                 <tr>
                     <th scope="col" className="px-6 py-3"> </th>
                     <th scope="col" className="px-6 py-3"> Product name </th>
@@ -51,10 +55,12 @@ const Cart = () => {
                 </tr>
             </thead>
             <tbody>
-              {variants.map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} />)}
+              { variants != null &&
+                variants.map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} />)
+              }
             </tbody>
             <tfoot>
-                <tr className="font-semibold text-gray-900 dark:text-white">
+                <tr className="font-semibold text-gray-900">
                   <th></th><th></th><th></th>
                   <td className="px-6 py-3">{cartModel.calculateCartQuantity(variants)} Items in cart</td>
                   <th scope="row" className="px-6 py-3 text-base">Total: </th>
