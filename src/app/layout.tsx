@@ -28,8 +28,8 @@ export default function RootLayout({
         <Alert />
         <br/>
 
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_MEASUREMENT_ID!} />
-        <GoogleAnaltyics />
+        {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_MEASUREMENT_ID!} /> */}
+        {/* <GoogleAnaltyics /> */}
         <Header />
 
         <div className="divider"></div>

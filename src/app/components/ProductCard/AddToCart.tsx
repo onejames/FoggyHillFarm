@@ -2,14 +2,10 @@
 
 import React, { useState, useRef } from 'react'
 
-import useLocalStorage from '../../hooks/UseLocalStorage';
-
 import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
-import { CartModel } from '../../interfaces/CartModel';
+import { CartModel } from '../../Models/CartModel';
 
 const AddToCart = ({product}: {product: ProductModel}) => {
-  const [variants, setVariants, getVariants] = useLocalStorage("cart", []);
-
   const [optionValue, setOptionValue] = useState(0);
 
   const diag = useRef<HTMLDialogElement>(null);  // HTMLDialogElement
@@ -28,7 +24,7 @@ const AddToCart = ({product}: {product: ProductModel}) => {
       }
     })!;
 
-    setVariants(cart.addVariant(getVariants(), variant));
+    cart.addVariant(variant);
   }
 
   return (

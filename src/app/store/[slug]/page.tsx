@@ -6,7 +6,7 @@ import Image from 'next/image'
 import AddToCart from '../../components/ProductCard/AddToCart';
 
 import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
-import { CartModel } from '../../interfaces/CartModel';
+import { CartModel } from '../../Models/CartModel';
 
 const product = async ({ params }: { params: { slug: string } }) => {
 

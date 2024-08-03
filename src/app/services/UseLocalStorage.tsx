@@ -1,12 +1,14 @@
 import { useState } from "react"
 
 const useLocalStorage = (key: string, initialValue: any) => {
-  const getValue = () => {
+  function getValue () {
     try {
       let value = null;
 
       if (typeof window !== "undefined") {
         const value = window.localStorage.getItem(key)
+      } else {
+        console.log('window is undefined');  
       }
 
       return value ? JSON.parse(value) : null;
@@ -15,31 +17,17 @@ const useLocalStorage = (key: string, initialValue: any) => {
     }
   }
 
-  const [state, setState] = useState(() => {
+  function setValue (value: any) {
     try {
-      let value = '';
-      if (typeof window !== "undefined") {
-        value = window.localStorage.getItem(key) ?? ''
-      }
-
-      return value ? JSON.parse(value) : initialValue
-    } catch (error) {
-      console.log(error)
-    }
-  })
-
-  const setValue = (value: any) => {
-    try {
-      const valueToStore = value instanceof Function ? value(state) : value
-      window.localStorage.setItem(key, JSON.stringify(valueToStore))
+      // const valueToStore = value instanceof Function ? value(state) : value
+      window.localStorage.setItem(key, JSON.stringify(value))
       
-      setState(value)
+      // setState(value)
     } catch (error) {
       console.log(error)
     }
 
     const customEvent = new CustomEvent('localStorage.'+key, {
-      detail: {
         value: value,
       },
     });
@@ -47,7 +35,7 @@ const useLocalStorage = (key: string, initialValue: any) => {
     window.dispatchEvent(customEvent);
   }
 
-  return [state, setValue, getValue]
+  return [getValue, setValue]
 }
 
 export default useLocalStorage

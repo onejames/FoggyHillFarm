@@ -1,7 +1,32 @@
-import { VariantModel } from "./ProductModel"
+import { VariantModel } from "../interfaces/ProductModel"
+
+import useLocalStorage from "../services/UseLocalStorage"
 
 export class CartModel {
-    addVariant(variants: VariantModel[], val: VariantModel) {
+
+    // public variants: VariantModel[];
+    private setVariants;
+    public getVariants;
+
+    private currencyType = 'USD';
+
+    public Currency = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: this.currencyType,
+    });
+
+    constructor () {
+        const  [getValue, setValue] = useLocalStorage("cart", []);
+
+        // this.variants = variants;
+        this.setVariants = setValue;
+        this.getVariants = getValue;
+
+        // console.log(this.variants);
+    }
+    
+    addVariant(val: VariantModel) {
+        let variants = this.getVariants();
         let found = false;
 
         variants.filter((item, i) => {
@@ -16,10 +41,14 @@ export class CartModel {
             variants.push(val);
         }
 
+        this.setVariants(variants);
+
         return variants;
     }
 
-    removeVariant(variants: VariantModel[], val: VariantModel) {
+    removeVariant(val: VariantModel) {
+        let variants = this.getVariants()
+
         if (!variants.length) {
             return variants;
         }
@@ -30,26 +59,43 @@ export class CartModel {
             }
         });
 
+        this.setVariants(variants);
+
         return variants;
     }
 
-    increaseVariant(variants: VariantModel[], val: VariantModel) {
+    increaseVariant(val: VariantModel) {
+        let variants = this.getVariants()
+
         variants.filter((item, i) => {
             if (item.id == val.id) {
                 variants[i].ammountInCart = item.ammountInCart + 1;
             }
         });
+
+        this.setVariants(variants)
     }
 
-    decreaseVariant(variants: VariantModel[], val: VariantModel) {
+    decreaseVariant(val: VariantModel) {
+        let variants = this.getVariants()
+
         variants.filter((item, i) => {
             if (item.id == val.id) {
                 variants[i].ammountInCart = item.ammountInCart - 1;
             }
         });
+
+        this.setVariants(variants)
     }
 
-    calculateCartQuantity(variants: VariantModel[]) {
+    clearCart() {
+        // this.variants = [];
+        this.setVariants([]);
+    }
+
+    calculateCartQuantity() {
+        let variants = this.getVariants()
+
         if (variants == null || !variants.length) {
             return 0;
         }
@@ -63,7 +109,9 @@ export class CartModel {
         return total;
     }
 
-    calculateCartTotal(variants: VariantModel[]) {
+    calculateCartTotal() {
+        let variants = this.getVariants()
+        
         if (variants == null || !variants.length) {
             return 0;
         }
@@ -74,11 +122,6 @@ export class CartModel {
             total = total + (item.price * item.ammountInCart);
         });
 
-        let Currency = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        });
-
-        return Currency.format(total);
+        return this.Currency.format(total);
     }
 }

@@ -2,21 +2,17 @@
 
 import { useState, useEffect } from 'react';
 
-import useLocalStorage from '../hooks/UseLocalStorage';
-
-import { CartModel } from '../interfaces/CartModel';
+import { CartModel } from '../Models/CartModel';
 import ProductRow from '../components/Product/ProductRow';
 import { VariantModel } from '../interfaces/ProductModel';
 
 
 const Cart = () => {
   
-  const cartModel = new CartModel();
-
-  const [variants, setVariants, getVariants] = useLocalStorage("cart", []);
+  const cart = new CartModel();
 
   const clearCart = () => {
-    setVariants([]);
+    cart.clearCart();
   }
 
   const [products, setProducts] = useState([])
@@ -55,16 +51,16 @@ const Cart = () => {
                 </tr>
             </thead>
             <tbody>
-              { variants != null &&
-                variants.map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} />)
+              { cart.getVariants() != null &&
+                cart.getVariants().map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} />)
               }
             </tbody>
             <tfoot>
                 <tr className="font-semibold text-gray-900">
                   <th></th><th></th><th></th>
-                  <td className="px-6 py-3">{cartModel.calculateCartQuantity(variants)} Items in cart</td>
+                  <td className="px-6 py-3">{cart.calculateCartQuantity()} Items in cart</td>
                   <th scope="row" className="px-6 py-3 text-base">Total: </th>
-                  <td className="px-6 py-3">{cartModel.calculateCartTotal(variants)}</td>
+                  <td className="px-6 py-3">{cart.calculateCartTotal()}</td>
                 </tr>
             </tfoot>
           </table>

@@ -2,30 +2,31 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-import useLocalStorage from '../hooks/UseLocalStorage';
-
-import { CartModel } from '../interfaces/CartModel';
+import { CartModel } from '../Models/CartModel';
 
 import Link from 'next/link'
 
 const CartWidget = () => {
 
-    const cartModel = new CartModel();
+    const cart = new CartModel();
 
-    const [variants, setVariants, getVariants] = useLocalStorage("cart", []);
-    const [quantity, setQuantity] = useState(cartModel.calculateCartQuantity(variants));
-    const [total, setTotal] = useState(cartModel.calculateCartTotal(variants));
+    const [quantity, setQuantity] = useState(cart.calculateCartQuantity());
+    const [total, setTotal] = useState(cart.calculateCartTotal());
 
     // @ts-ignore: Parameter 'e' implicitly has an 'any' type.ts(7006)
     const cartUpdate = useCallback(e => {
-        setQuantity(cartModel.calculateCartQuantity(e.detail.value));
-        setTotal(cartModel.calculateCartTotal(e.detail.value));
+        // e.detail.value
+        setQuantity(cart.calculateCartQuantity());
+        setTotal(cart.calculateCartTotal());
+
+        console.log('cart widget event');
+        console.log(cart.getVariants());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         window.addEventListener('localStorage.cart', cartUpdate);
-
+console.log("widget loaded");
         return () => {
             window.removeEventListener("localStorage.cart", cartUpdate);
         };
