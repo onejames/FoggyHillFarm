@@ -5,17 +5,16 @@ export interface ProductModel {
     published_at: Date;
     price: number;
     available: boolean;
-    variants: VariantModel[];
+    variants: variantsModel[];
     images: string[];
     featured_image: string;
     url: string;
     tags: string[];
 }
 
-export interface VariantModel {
+export interface variantsModel {
     id: number;
     title: string;
     price: number;
     available: boolean;
-    ammountInCart: number;
 }

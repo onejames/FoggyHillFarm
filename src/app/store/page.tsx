@@ -1,14 +1,21 @@
 
+
 import { promises as fs } from 'fs';
 import { readdirSync } from 'fs';
 
 import ProductCard from '../components/ProductCard/ProductCard'
 
 import { ProductModel } from '../interfaces/ProductModel';
-import { ProductSource } from '../Models/API';
 
 const products = async () => {
   let products: ProductModel[] = [];
+
+  const files = readdirSync(process.cwd() + '/public/data/');
+
+  // files.forEach ( async (file) => {
+  //   let jsonFile = await fs.readFile(process.cwd() + '/public/data/'+file, 'utf8');
+  //   products.push(JSON.parse(jsonFile));
+  // });
 
   const file1 = await fs.readFile(process.cwd() + '/public/data/blackberry-jam.json', 'utf8');
   const file2 = await fs.readFile(process.cwd() + '/public/data/grape-jam.json', 'utf8');

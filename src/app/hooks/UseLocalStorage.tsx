@@ -3,12 +3,8 @@ import { useState } from "react"
 const useLocalStorage = (key: string, initialValue: any) => {
   const getValue = () => {
     try {
-      let value = null;
-
-      if (typeof window !== "undefined") {
-        const value = window.localStorage.getItem(key)
-      }
-
+      const value = window.localStorage.getItem(key)
+      // const value = '';
       return value ? JSON.parse(value) : null;
     } catch (error) {
       console.log(error)
