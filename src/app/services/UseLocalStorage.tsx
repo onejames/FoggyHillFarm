@@ -28,6 +28,7 @@ const useLocalStorage = (key: string, initialValue: any) => {
     }
 
     const customEvent = new CustomEvent('localStorage.'+key, {
+      detail: {
         value: value,
       },
     });

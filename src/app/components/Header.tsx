@@ -5,8 +5,7 @@ import { Bitter } from 'next/font/google'
 
 const bitter = Bitter({ subsets: ['latin'] })
 
-import SearchModal from './SearchModal'
-import SearchButton from './SearchButton'
+import SearchWidget from './SearchWidget'
 import CartWidget from './CartWidget'
 import HeaderMenue from './Header/Menue'
 
@@ -23,6 +22,8 @@ const Header = () => {
 
         <div className="navbar-end flex-none">
             
+            <SearchWidget />
+
             <CartWidget />
 
             <div className="dropdown dropdown-end">
@@ -45,7 +46,6 @@ const Header = () => {
                 </ul>
             </div>
         </div>
-        <SearchModal />
     </div>
   )
 }
