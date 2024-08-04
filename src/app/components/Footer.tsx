@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="footer bg-neutral text-neutral-content p-10 my-4">
         <nav>
             <h6 className="footer-title">Services</h6>
-            <Link href={""} className="link link-hover">Batch order</Link>
+            <Link href={"/faq#batch-orders"} className="link link-hover">Batch orders</Link>
             <Link href={""} className="link link-hover">Design</Link>
         </nav>
         <nav>
