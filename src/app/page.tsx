@@ -37,6 +37,7 @@ export default function Home() {
           <FeaturedProducts />
       </div>
 
+      {/* Comments */}
       <div>
         <section className="grid sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 m-4 p-10 bg-slate-100">
             <p className="p-3" >
@@ -49,6 +50,16 @@ export default function Home() {
               If you&apos;re watching your sugar intake, Good Good Blueberry Jam is a delicious option. Made with stevia as a sweetener, it boasts a low-calorie and low-carb content  that fits perfectly into a keto diet [3]. Users love the taste, with Good Good Blueberry Jam.
             </p>
         </section>
+      </div>
+
+      {/* reviews */}
+      <div>
+
+      </div>
+
+      {/* Photo scroller */}
+      <div>
+
       </div>
     </main>
   );
