@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer className="footer bg-neutral text-neutral-content p-10 my-4">
+    <footer className="footer bg-neutral text-neutral-content p-10 my-4 rounded">
         <nav>
             <h6 className="footer-title">Services</h6>
             <Link href={"/faq#batch-orders"} className="link link-hover">Batch orders</Link>
