@@ -8,7 +8,7 @@ import { CartModel } from '../../Models/CartModel';
 const AddToCart = ({product}: {product: ProductModel}) => {
   const [optionValue, setOptionValue] = useState(0);
 
-  const diag = useRef<HTMLDialogElement>(null);  // HTMLDialogElement
+  const diag = useRef<HTMLDialogElement>(null);
 
   const cart = new CartModel();
 

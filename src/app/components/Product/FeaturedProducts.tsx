@@ -7,7 +7,7 @@ import ProductCard from '../../components/ProductCard/ProductCard'
 
 const FeaturedProducts = async () => {
     const file1 = await fs.readFile(process.cwd() + '/public/data/black-raspberry-jam.json', 'utf8');
-    const file2 = await fs.readFile(process.cwd() + '/public/data/grape-jam.json', 'utf8');
+    const file2 = await fs.readFile(process.cwd() + '/public/data/apple-butter.json', 'utf8');
     const file3 = await fs.readFile(process.cwd() + '/public/data/honey.json', 'utf8');
 
     let featuredProducts = [];

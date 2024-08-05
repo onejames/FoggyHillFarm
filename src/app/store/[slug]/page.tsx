@@ -20,13 +20,12 @@ const product = async ({ params }: { params: { slug: string } }) => {
         <div>
             <h1 className='card-title product-title'>{product.title}</h1>
 
-            <Image className='m-4' src={product.featured_image} alt="Product" width="600" height="800" />
+            <Image className='m-4 rounded' src={product.featured_image} alt="Product" width="600" height="800" />
 
             <div>Price: {product.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</div>
 
             <div className='my-6 product-description' dangerouslySetInnerHTML={{__html: product.description}}></div>
 
-            <br />
             <AddToCart product={product} />
 
             <br />
