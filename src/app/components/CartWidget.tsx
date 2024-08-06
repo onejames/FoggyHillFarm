@@ -20,12 +20,12 @@ const CartWidget = () => {
     }, []);
 
     useEffect(() => {
-        window.addEventListener('localStorage.cart', cartUpdate);
+        window.addEventListener('localStorage.cartCount', cartCountUpdate);
 
         return () => {
-            window.removeEventListener("localStorage.cart", cartUpdate);
+            window.removeEventListener("localStorage.cartCount", cartCountUpdate);
         };
-    }, [cartUpdate]);
+    }, [cartCountUpdate]);
 
     return (
         <div className="dropdown dropdown-end">

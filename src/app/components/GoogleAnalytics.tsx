@@ -10,7 +10,7 @@ const GoogleAnalytics = () => {
       />
 
       <Script id='' strategy='lazyOnload'>
-        {/* if(host != {"localhost"}) */}
+        if(host != {"localhost"})
         {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
