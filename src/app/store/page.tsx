@@ -4,7 +4,7 @@ import { readdirSync } from 'fs';
 import ProductCard from '../components/ProductCard/ProductCard'
 
 import { ProductModel } from '../interfaces/ProductModel';
-import { ProductSource } from '../Models/API';
+import { ProductSource } from '../models/API';
 
 const products = async () => {
   let products: ProductModel[] = [];
