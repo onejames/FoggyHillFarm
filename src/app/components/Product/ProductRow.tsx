@@ -7,18 +7,15 @@ import { InputCounter } from 'flowbite';
 import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
 import { CartModel } from '../../models/CartModel'
 
-import useLocalStorage from '../../services/UseLocalStorage';
+// import useLocalStorage from '../../services/UseLocalStorage';
 
 const ProductRow = ({variant, products}: {variant: VariantModel, products: ProductModel[]}) => {
+    const cart = new CartModel();
 
     const qty = useRef<HTMLInputElement>(null);
     const decrement = useRef<HTMLInputElement>(null);
     const increment = useRef<HTMLInputElement>(null);
-
-    const [value, setValue, getValue] = useLocalStorage("cart", []);
-    const [cart, setCart] = useState(value);
-
-    // const cart = new CartModel();
+    const removeConfirm = useRef<HTMLDialogElement>(null);
 
     const product: ProductModel = products.find((product: ProductModel) => {
         let found = false;
@@ -34,48 +31,14 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
         }
     })!;
 
-    let Currency = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    });
-
-    const calculatePrice = (item: VariantModel) => {
-        const total = item.price * item.ammountInCart;
-
-        return Currency.format(total);
-    }
-
-    const remove = (variant: VariantModel) => {
-        console.log('remove variant')
-        console.log(variant)
-    }
-
     const options = {
         minValue: 0,
         maxValue: null, 
         onIncrement: () => {
-            const variants = getValue();
-
-            variants.map((item: VariantModel) => {
-                if(item.id == variant.id) {
-                    item.ammountInCart = item.ammountInCart + 1;
-                    variant.ammountInCart = variant.ammountInCart + 1;
-                }
-            });
-
-            setValue(variants);
+            cart.addVariant(variant);
         },
         onDecrement: () => {
-            const variants = getValue();
-
-            variants.map((item: VariantModel) => {
-                if(item.id == variant.id) {
-                    item.ammountInCart = item.ammountInCart - 1;
-                    variant.ammountInCart = variant.ammountInCart - 1;
-                }
-            });
-
-            setValue(variants);
+            cart.decreaseVariant(variant);
         }
     };
 
@@ -85,6 +48,12 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
     };
 
     const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
+
+    const remove = (variant: VariantModel) => {
+        removeConfirm.current!.close();
+        cart.removeVariant(variant);
+        return <div></div>
+    }
   
     return (
         <tr className="bg-white border-b hover:bg-gray-50">
@@ -95,7 +64,7 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
                 {product.title}, {variant.title}
             </td>
             <td className="px-6 py-4">
-                {Currency.format(variant.price)}
+                {cart.formatCurrency(variant.price)}
             </td>
             <td className="px-6 py-4">
                 <form className="max-w-xs mx-auto">
@@ -114,15 +83,29 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
                     </div>
                 </form>
             </td> 
-            <td className="px-6 py-4">
-                {calculatePrice(variant)}
+            <td className="px-6 py-4 font-bold">
+                {cart.formatCurrency(cart.calculateVariantPrice(variant))}
             </td> 
             <td className="px-6 py-4 text-right">
-                <button onClick={() => { remove(variant )}} className="font-medium text-blue-600 hover:underline">
+                <button onClick={() => { removeConfirm.current!.showModal() }} className="font-medium text-blue-600 hover:underline">
                     <svg className="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
                     </svg>
                 </button>
+
+
+                        <dialog ref={removeConfirm} className="opacity-100 relative p-4 text-center bg-white rounded-lg shadow">
+                            <svg className="text-gray-400 w-11 h-11 mb-3.5 mx-auto" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd"></path></svg>
+                            <p className="mb-4 text-gray-500">Are you sure you want to remove this item?</p>
+                            <div className="flex justify-center items-center space-x-4">
+                                <button onClick={() => { removeConfirm.current!.close() }} type="button" className="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10">
+                                    No, cancel
+                                </button>
+                                <button onClick={() => { remove(variant) }} className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300">
+                                    Yes, I'm sure
+                                </button>
+                            </div>
+                        </dialog>
             </td>
         </tr>
     )

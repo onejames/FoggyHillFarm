@@ -3,14 +3,12 @@
 import React, { useState, useRef } from 'react'
 import Link from 'next/link'
 
-import useLocalStorage from '../../services/UseLocalStorage';
-
 import { ProductModel, VariantModel } from '../../interfaces/ProductModel'
 import { CartModel } from '../../models/CartModel';
 
 // const AddToCart = ({ id }: { id: number }) => {
 const AddToCart = ({product}: {product: ProductModel}) => {
-    const [value, setValue, getValue] = useLocalStorage("cart", []);
+    const cart = new CartModel();
 
     const [optionValue, setOptionValue] = useState(0);
     const [cartAction, setCartAction] = useState(0);
@@ -32,26 +30,7 @@ const AddToCart = ({product}: {product: ProductModel}) => {
             }
         })!;
 
-        let found = false;
-        let currentCart = getValue();
-
-        currentCart.map((item: VariantModel) => {
-            if(item.id == variant.id) {
-                item.ammountInCart = item.ammountInCart + 1;
-                variant.ammountInCart = item.ammountInCart;
-                console.log('found in cart');
-                console.log(variant.ammountInCart);
-                found = true;
-            }
-        });
-        if (!found) {
-            variant.ammountInCart = variant.ammountInCart + 1;
-            currentCart.push(variant);
-        }
-
-        setValue(currentCart);
-
-        // cart.addVariant(variant);
+        cart.addVariant(variant);
 
         setTimeout(() => {
             setCartAction(2);

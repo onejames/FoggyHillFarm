@@ -3,125 +3,108 @@ import { VariantModel } from "../interfaces/ProductModel"
 import useLocalStorage from "../services/UseLocalStorage"
 
 export class CartModel {
-
-    // public variants: VariantModel[];
-    private setVariants;
-    public getVariants;
-
-    private currencyType = 'USD';
-
-    public Currency = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: this.currencyType,
-    });
+    value: []
+    setValue: Function
+    getValue: Function
+    currency: Intl.NumberFormat
 
     constructor () {
-        const  [getValue, setValue] = useLocalStorage("cart", []);
+        const [value, setValue, getValue] = useLocalStorage("cart", []);
 
-        // this.variants = variants;
-        this.setVariants = setValue;
-        this.getVariants = getValue;
+        this.value = value;
+        this.setValue = setValue;
+        this.getValue = getValue;
 
-        // console.log(this.variants);
+        this.currency = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD', //process.env.CURRENCY this should also probibly be loaded from the suer profile
+        });
     }
-    
-    addVariant(val: VariantModel) {
-        let variants = this.getVariants();
-        let found = false;
 
-        variants.filter((item, i) => {
-            if (item.id == val.id) {
-                variants[i].ammountInCart = item.ammountInCart + 1;
+    modifyVariant (variant: VariantModel, add: boolean = true, remove: boolean = false) {
+        //NOTE: its possible that the old variant ammountInCart is sticking around after removal
+        let found = false;
+        let currentCart = this.getValue();
+
+        currentCart.map((item: VariantModel, i: number) => {
+            if(item.id == variant.id) {
+                if (add) {
+                    item.ammountInCart = item.ammountInCart + 1;
+                } else {
+                    if(item.ammountInCart > 0 && !remove) {
+                        item.ammountInCart = item.ammountInCart - 1;
+                    } else if (remove) {
+                        item.ammountInCart = 0;
+                        console.log(i);
+                        currentCart.splice(i, 1);
+                    }
+                }
+                variant.ammountInCart = item.ammountInCart;
                 found = true;
             }
         });
 
-        if (!found) {
-            val.ammountInCart = 1;
-            variants.push(val);
+        if (!found && add) {
+            variant.ammountInCart = variant.ammountInCart + 1;
+            currentCart.push(variant);
         }
 
-        this.setVariants(variants);
+        this.setValue(currentCart);
 
-        return variants;
+        return currentCart;
     }
 
-    removeVariant(val: VariantModel) {
-        let variants = this.getVariants()
-
-        if (!variants.length) {
-            return variants;
-        }
-
-        variants.forEach((item, i) => {
-            if (item.id == val.id) {
-                delete variants[i];
-            }
-        });
-
-        this.setVariants(variants);
-
-        return variants;
+    addVariant (variant: VariantModel) {
+        return this.modifyVariant(variant);
     }
 
-    increaseVariant(val: VariantModel) {
-        let variants = this.getVariants()
-
-        variants.filter((item, i) => {
-            if (item.id == val.id) {
-                variants[i].ammountInCart = item.ammountInCart + 1;
-            }
-        });
-
-        this.setVariants(variants)
+    increaseVariant (variant: VariantModel) {
+        return this.modifyVariant(variant);
     }
 
-    decreaseVariant(val: VariantModel) {
-        let variants = this.getVariants()
-
-        variants.filter((item, i) => {
-            if (item.id == val.id) {
-                variants[i].ammountInCart = item.ammountInCart - 1;
-            }
-        });
-
-        this.setVariants(variants)
+    decreaseVariant (variant: VariantModel) {
+        return this.modifyVariant (variant, false);
     }
 
-    clearCart() {
-        // this.variants = [];
-        this.setVariants([]);
+    removeVariant (variant: VariantModel) {
+        return this.modifyVariant (variant, false, true);
     }
 
-    calculateCartQuantity() {
-        let variants = this.getVariants()
+    clear () {
+        this.setValue([]);
+    }
 
-        if (variants == null || !variants.length) {
-            return 0;
-        }
+    update (variants: VariantModel[]) {
+        this.setValue(variants);
+    }
+
+    calculateCartQuantity () {
+        this.getValue();
 
         let total = 0;
 
-        variants.forEach((item) => {
+        this.getValue().map((item: VariantModel) => {
             total = total + item.ammountInCart;
         });
 
         return total;
     }
 
-    calculateCartTotal() {
-        let variants = this.getVariants()
-        
-        if (variants == null || !variants.length) {
-            return 0;
-        }
+    calculateVariantPrice (item: VariantModel) {
+        return item.price * item.ammountInCart;
+    }
 
+    calculateCartTotal () {
         let total = 0;
 
-        variants.forEach((item) => {
-            total = total + (item.price * item.ammountInCart);
+        this.getValue().map((item: VariantModel) => {
+            total = total + this.calculateVariantPrice(item);
         });
 
-        return this.Currency.format(total);
+        return total;
+    }
+
+    formatCurrency (int: number) {
+        return this.currency.format(int);
     }
 }

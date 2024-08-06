@@ -2,21 +2,21 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-import useLocalStorage from '../services/UseLocalStorage';
+import { CartModel } from '../models/CartModel';
 
 import Link from 'next/link'
 
 import { VariantModel } from '../interfaces/ProductModel';
 
 const CartWidget = () => {
+    const cart = new CartModel();
 
-    const [value, setValue, getValue] = useLocalStorage("cart", []);
-    const [cart, setCart] = useState(value);
+    const [cartQuantity, setCartQuantity] = useState(cart.calculateCartQuantity());
+    const [cartTotal, setCartTotal] = useState(cart.calculateCartTotal());
 
     const cartUpdate = useCallback((e: CustomEvent) => {
-        setCart(getValue());
-        console.log(e.detail.value);
-        calculateCartQuantity();
+        setCartQuantity(cart.calculateCartQuantity());
+        setCartTotal(cart.calculateCartTotal());
     }, []);
 
     useEffect(() => {
@@ -26,15 +26,6 @@ const CartWidget = () => {
             window.removeEventListener("localStorage.cart", cartUpdate);
         };
     }, [cartUpdate]);
-
-    function calculateCartQuantity () {
-        let total = 0;
-
-        cart.map((item: VariantModel) => {
-            total = total + item.ammountInCart;
-        });
-        return total;
-    }
 
     return (
         <div className="dropdown dropdown-end">
@@ -52,15 +43,15 @@ const CartWidget = () => {
                         strokeWidth="2"
                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    <span className="badge badge-sm indicator-item">{calculateCartQuantity()}</span>
+                    <span className="badge badge-sm indicator-item">{cartQuantity}</span>
                 </div>
             </div>
             <div
                 tabIndex={0}
                 className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
                 <div className="card-body">
-                    <span className="text-lg font-bold">{calculateCartQuantity()} Items</span>
-                    <span className="text-info">Subtotal: $999</span>
+                    <span className="text-lg font-bold">{cartQuantity} Items</span>
+                    <span className="text-info">Subtotal: {cart.formatCurrency(cartTotal)}</span>
                     <div className="card-actions">
                         <Link href="/cart" className="btn btn-primary btn-block">View cart</Link>
                     </div>
