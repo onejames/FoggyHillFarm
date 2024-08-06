@@ -6,7 +6,7 @@ import Image from 'next/image'
 import AddToCart from '../../components/ProductCard/AddToCart';
 
 import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
-import { CartModel } from '../../Models/CartModel';
+import { CartModel } from '../../models/CartModel';
 
 const product = async ({ params }: { params: { slug: string } }) => {
 
@@ -38,8 +38,6 @@ const product = async ({ params }: { params: { slug: string } }) => {
                     )
                 }
             </div>
-
-            {/* <p>{JSON.stringify(product.variants)}</p> */}
         </div>
     )
 }

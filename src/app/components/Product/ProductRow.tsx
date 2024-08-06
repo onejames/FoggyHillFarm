@@ -1,11 +1,13 @@
 "use client"
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import Image from 'next/image'
 import { InputCounter } from 'flowbite';
 
 import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
-import { CartModel } from '../../Models/CartModel'
+import { CartModel } from '../../models/CartModel'
+
+import useLocalStorage from '../../services/UseLocalStorage';
 
 const ProductRow = ({variant, products}: {variant: VariantModel, products: ProductModel[]}) => {
 
@@ -13,7 +15,10 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
     const decrement = useRef<HTMLInputElement>(null);
     const increment = useRef<HTMLInputElement>(null);
 
-    const cart = new CartModel();
+    const [value, setValue, getValue] = useLocalStorage("cart", []);
+    const [cart, setCart] = useState(value);
+
+    // const cart = new CartModel();
 
     const product: ProductModel = products.find((product: ProductModel) => {
         let found = false;
@@ -41,6 +46,7 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
     }
 
     const remove = (variant: VariantModel) => {
+        console.log('remove variant')
         console.log(variant)
     }
 
@@ -48,10 +54,28 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
         minValue: 0,
         maxValue: null, 
         onIncrement: () => {
-            cart.increaseVariant(variant);
+            const variants = getValue();
+
+            variants.map((item: VariantModel) => {
+                if(item.id == variant.id) {
+                    item.ammountInCart = item.ammountInCart + 1;
+                    variant.ammountInCart = variant.ammountInCart + 1;
+                }
+            });
+
+            setValue(variants);
         },
         onDecrement: () => {
-            cart.decreaseVariant(variant);
+            const variants = getValue();
+
+            variants.map((item: VariantModel) => {
+                if(item.id == variant.id) {
+                    item.ammountInCart = item.ammountInCart - 1;
+                    variant.ammountInCart = variant.ammountInCart - 1;
+                }
+            });
+
+            setValue(variants);
         }
     };
 
@@ -68,7 +92,7 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
                 <Image alt="Product" src={product.featured_image} width={150} height={200} />
             </td>
             <td className="px-6 py-4">
-                {product.title}
+                {product.title}, {variant.title}
             </td>
             <td className="px-6 py-4">
                 {Currency.format(variant.price)}
@@ -81,7 +105,7 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16"/>
                             </svg>
                         </button>
-                        <input value={variant.ammountInCart} type="text" ref={qty} id={"quantity-input"+variant.id} data-input-counter aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5" placeholder="0" required />
+                        <input value={variant.ammountInCart} readOnly type="text" ref={qty} id={"quantity-input"+variant.id} data-input-counter aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5" placeholder="0" required />
                         <button type="button" id="increment-button" data-input-counter-increment={"quantity-input"+variant.id} ref={increment} className="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none">
                             <svg className="w-3 h-3 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16"/>
