@@ -37,7 +37,8 @@
         "sku": null,
         "requires_shipping": true,
         "taxable": true,
-        "barcode": "49738645"
+        "barcode": "49738645",
+        "ammountInCart": 0
       },
       {
         "id": 100053,
@@ -56,7 +57,8 @@
         "sku": null,
         "requires_shipping": true,
         "taxable": true,
-        "barcode": "49738657"
+        "barcode": "49738657",
+        "ammountInCart": 0
       },
       {
         "id": 1000254,
@@ -75,7 +77,8 @@
         "sku": null,
         "requires_shipping": true,
         "taxable": true,
-        "barcode": "49738673"
+        "barcode": "49738673",
+        "ammountInCart": 0
       }
     ],
     "images": [
