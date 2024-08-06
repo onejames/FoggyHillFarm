@@ -8,12 +8,12 @@ const page = () => {
         <h2 className="text-4xl font-bold">foggyhillfarmbloomington.com Privacy Policy</h2>
         <p className="my-3 ml-2 text-gray-500">Type of website: Ecommerce<br />Effective date: 2nd day of August, 2024</p>
         <p className="my-3 ml-2 text-gray-500">
-            foggyhillfarm.com (the "Site") is owned and operated by James Laster. James Laster can be contacted at: 
+            foggyhillfarm.com (the &quot;Site&quot;) is owned and operated by James Laster. James Laster can be contacted at: 
             <br /><br />onejames@gmail.com<br />(812) 360-7244<br />1705 State Ferry Rd
         </p>
 
         <h3 className=" mt-4 text-3xl font-bold">Purpose</h3>
-        <p className="my-3 ml-2 text-gray-500">The purpose of this privacy policy (this "Privacy Policy") is to inform users of our Site of the following:</p>
+        <p className="my-3 ml-2 text-gray-500">The purpose of this privacy policy (this &quot;Privacy Policy&quot;) is to inform users of our Site of the following:</p>
         <ol className="ml-4 space-y-1 text-gray-500 list-disc list-inside">
             <li value="1">The personal data we will collect;</li>
             <li value="2">Use of collected data;</li>
@@ -77,10 +77,10 @@ const page = () => {
         <p className="my-3 ml-2 text-gray-500">If you would like to know if we have collected your personal data, how we have used your personal data, if we have disclosed your personal data and to who we disclosed your personal data, or if you would like your data to be deleted or modified in any way, please contact us.</p>
 
         <h3 className=" mt-4 text-3xl font-bold">Do Not Track Notice</h3>                    
-        <p className="my-3 ml-2 text-gray-500">Do Not Track ("DNT") is a privacy preference that you can set in certain web browsers. We do not track the users of our Site over time and across third party websites and therefore do not respond to browser-initiated DNT signals.</p>
+        <p className="my-3 ml-2 text-gray-500">Do Not Track (&quot;DNT&quot;) is a privacy preference that you can set in certain web browsers. We do not track the users of our Site over time and across third party websites and therefore do not respond to browser-initiated DNT signals.</p>
 
         <h3 className=" mt-4 text-3xl font-bold">Modifications</h3>
-        <p className="my-3 ml-2 text-gray-500">This Privacy Policy may be amended from time to time in order to maintain compliance with the law and to reflect any changes to our data collection process. When we amend this Privacy Policy we will update the "Effective Date" at the top of this Privacy Policy. We recommend that our users periodically review our Privacy Policy to ensure that they are notified of any updates. If necessary, we may notify users by email of changes to this Privacy Policy.</p>
+        <p className="my-3 ml-2 text-gray-500">This Privacy Policy may be amended from time to time in order to maintain compliance with the law and to reflect any changes to our data collection process. When we amend this Privacy Policy we will update the &quot;Effective Date&quot; at the top of this Privacy Policy. We recommend that our users periodically review our Privacy Policy to ensure that they are notified of any updates. If necessary, we may notify users by email of changes to this Privacy Policy.</p>
 
         <h3 className=" mt-4 text-3xl font-bold">Contact Information</h3>
         <p className="my-3 ml-2 text-gray-500">If you have any questions, concerns or complaints, you can contact us any time by using the contact us link, or email at inquires@foggyhillfarmbloomington.com</p>

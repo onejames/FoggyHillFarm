@@ -13,8 +13,8 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
     const cart = new CartModel();
 
     const qty = useRef<HTMLInputElement>(null);
-    const decrement = useRef<HTMLInputElement>(null);
-    const increment = useRef<HTMLInputElement>(null);
+    const decrement = useRef<HTMLButtonElement>(null);
+    const increment = useRef<HTMLButtonElement>(null);
     const removeConfirm = useRef<HTMLDialogElement>(null);
 
     const product: ProductModel = products.find((product: ProductModel) => {
@@ -101,7 +101,7 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
                             No, cancel
                         </button>
                         <button onClick={() => { remove(variant) }} className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300">
-                            Yes, I'm sure
+                            Yes, I&apos;m sure
                         </button>
                     </div>
                 </dialog>

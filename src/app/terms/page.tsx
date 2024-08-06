@@ -6,14 +6,14 @@ const page = () => {
         <h1 className='my-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl'>Website Terms and Conditions</h1>
         <h2 className="text-4xl font-bold">TERMS AND CONDITIONS</h2>
         <p className="my-3 ml-2 text-gray-500" >
-            These terms and conditions (the "Terms and Conditions") govern the use of <span>foggyhillfarmylo ml-2omington.com</span> (the "Site"). This Site is owned and operated by James Laster. This Site is an ecommerce website.
+            These terms and conditions (the &quot;Terms and Conditions&quot;) govern the use of <span>foggyhillfarmylo ml-2omington.com</span> (the &quot;Site&quot;). This Site is owned and operated by James Laster. This Site is an ecommerce website.
             <br />
             <br />
             By using this Site, you indicate that you have read and understand these Terms and Conditions and agree to abide by them at all times.
         </p>
 
         <h3 className=" mt-4 text-3xl font-bold">Intellectual Property</h3>
-        <p className="my-3 ml-2 text-gray-500" >All content published and made available on our Site is the property of James Laster and the Site's creators. This includes, but is not limited to images, text, logos, documents, downloadable files and anything that contributes to the composition of our Site.</p>
+        <p className="my-3 ml-2 text-gray-500" >All content published and made available on our Site is the property of James Laster and the Site&apos;s creators. This includes, but is not limited to images, text, logos, documents, downloadable files and anything that contributes to the composition of our Site.</p>
         
         <h3 className=" mt-4 text-3xl font-bold">Age Restrictions</h3>
         <p className="my-3 ml-2 text-gray-500" >
