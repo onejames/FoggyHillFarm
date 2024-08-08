@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import Link from 'next/link'
 
 import { CartModel } from '../models/CartModel';
@@ -9,7 +9,9 @@ import { VariantModel } from '../interfaces/ProductModel';
 import ProductRow from '../components/Product/ProductRow';
 
 const Cart = () => {
+    // const cart = useMemo(() => new CartModel(), []);
     const cart = new CartModel();
+
     const [cartQuantity, setCartQuantity] = useState(cart.calculateCartQuantity());
     const [cartTotal, setCartTotal] = useState(cart.calculateCartTotal());
 
@@ -18,24 +20,22 @@ const Cart = () => {
 
     const clearConfirm = useRef<HTMLDialogElement>(null);
 
-    useEffect(() => {
-        fetch('/api/products')
-            .then((res) => res.json())
-            .then((data) => {
-                setProducts(JSON.parse(data))
-                setLoading(false)
-            })
-    }, [])
-
-    const cartUpdate = useCallback((e: CustomEvent) => {
+    const cartUpdate = useCallback((e: Event) => {
         setCartQuantity(cart.calculateCartQuantity());
         setCartTotal(cart.calculateCartTotal());
-    }, []);
+    }, [cart]);
 
-    useEffect(() => {
+    fetch('/api/products', { next: { revalidate: 120 } })
+    .then((res) => res.json())
+    .then((data) => {
+        setProducts(JSON.parse(data))
+        setLoading(false)
+    })
+
+    useEffect(function mount() {
         window.addEventListener('localStorage.cart', cartUpdate);
 
-        return () => {
+        return function unMount() {
             window.removeEventListener("localStorage.cart", cartUpdate);
         };
     }, [cartUpdate]);
@@ -64,9 +64,9 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        { cart != null &&
+                        {/* { cart.getValue().length > 0 &&
                             cart.getValue().map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} />)
-                        }
+                        } */}
                     </tbody>
                     <tfoot>
                         <tr className="font-semibold text-gray-900">
@@ -86,7 +86,7 @@ const Cart = () => {
                         No, cancel
                     </button>
                     <button onClick={() => { cart.clear(); clearConfirm.current!.close() }} className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300">
-                        Yes, I'm sure
+                        Yes, I&apos;m sure
                     </button>
                 </div>
             </dialog>

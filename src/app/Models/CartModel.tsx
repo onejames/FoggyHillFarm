@@ -9,6 +9,7 @@ export class CartModel {
     currency: Intl.NumberFormat
 
     constructor () {
+         // eslint-disable-next-line react-hooks/exhaustive-deps
         const [value, setValue, getValue] = useLocalStorage("cart", []);
 
         this.value = value;
@@ -79,8 +80,6 @@ export class CartModel {
     }
 
     calculateCartQuantity () {
-        this.getValue();
-
         let total = 0;
 
         this.getValue().map((item: VariantModel) => {

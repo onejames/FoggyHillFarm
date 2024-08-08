@@ -1,13 +1,21 @@
 import React from 'react'
 import Link from 'next/link'
+import dynamic from "next/dynamic";
 
 import { Bitter } from 'next/font/google'
 
 const bitter = Bitter({ subsets: ['latin'] })
 
 import SearchWidget from './SearchWidget'
-import CartWidget from './CartWidget'
+
 import HeaderMenue from './Header/Menue'
+
+const CartWidget = dynamic(
+    () => {
+      return import("./CartWidget");
+    },
+    { ssr: false }
+);
 
 const Header = () => {
   return (

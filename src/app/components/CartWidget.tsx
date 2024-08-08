@@ -1,31 +1,31 @@
 "use client"
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 import { CartModel } from '../models/CartModel';
 
 import Link from 'next/link'
 
-import { VariantModel } from '../interfaces/ProductModel';
-
 const CartWidget = () => {
+    
+    // const cart = useMemo(() => new CartModel(), []);
     const cart = new CartModel();
 
     const [cartQuantity, setCartQuantity] = useState(cart.calculateCartQuantity());
     const [cartTotal, setCartTotal] = useState(cart.calculateCartTotal());
 
-    const cartUpdate = useCallback((e: CustomEvent) => {
-        setCartQuantity(cart.calculateCartQuantity());
-        setCartTotal(cart.calculateCartTotal());
-    }, []);
+    useEffect(function mount() {
+        const cartUpdate = (ev: Event) => {
+            setCartQuantity(cart.calculateCartQuantity());
+            setCartTotal(cart.calculateCartTotal());
+        };
 
-    useEffect(() => {
         window.addEventListener('localStorage.cart', cartUpdate);
 
-        return () => {
+        return function unMount() {
             window.removeEventListener("localStorage.cart", cartUpdate);
         };
-    }, [cartUpdate]);
+    }, [cart]);
 
     return (
         <div className="dropdown dropdown-end">
