@@ -4,10 +4,10 @@ import { useState, useEffect } from "react"
 
 import { promises as fs } from 'fs';
 
-import ProductCard from '../components/ProductCard/ProductCard'
+import ProductCard from '@/components/ProductCard/ProductCard'
 
-import { ProductModel } from '../interfaces/ProductModel';
-import { ProductSource } from '../models/API';
+import { ProductModel } from '@/interfaces/ProductModel';
+import { ProductSource } from '@/models/API';
 
 const Products = () => {
   const [products, setProducts] = useState([]);

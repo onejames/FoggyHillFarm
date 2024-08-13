@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { ProductModel } from '../../interfaces/ProductModel';
+import { ProductModel } from '@/interfaces/ProductModel';
 import AddToCart from './AddToCart';
 
 const ProductCard = ({product, addFilter = null}: {product: ProductModel, addFilter: Function|null}) => {

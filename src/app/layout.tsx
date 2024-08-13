@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import { CartProvider } from "./context/CartContext";
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Alert from './components/Alert'
-import GoogleAnaltyics from './components/GoogleAnalytics'
+import { CartProvider } from "@/context/CartContext";
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import Alert from '@/components/Alert'
+import GoogleAnaltyics from '@/components/GoogleAnalytics'
 
 import { GoogleTagManager } from '@next/third-parties/google'
 

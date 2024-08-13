@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import {createSendEmailCommand, client} from "../../services/send-email"
+import {createSendEmailCommand, client} from "@/services/send-email"
 
 type ResponseData = {
   message: string

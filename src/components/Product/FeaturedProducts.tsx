@@ -2,8 +2,8 @@ import React from 'react'
 
 import { promises as fs } from 'fs';
 
-import { ProductModel } from '../../interfaces/ProductModel';
-import ProductCard from '../../components/ProductCard/ProductCard'
+import { ProductModel } from '@/interfaces/ProductModel';
+import ProductCard from '@/components/ProductCard/ProductCard';
 
 const FeaturedProducts = async () => {
     const file1 = await fs.readFile(process.cwd() + '/public/data/black-raspberry-jam.json', 'utf8');

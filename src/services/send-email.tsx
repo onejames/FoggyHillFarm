@@ -1,7 +1,7 @@
 // aws-ses.js
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 
-// import { process } from "../interfaces/processModel"
+// import { process } from "@/interfaces/processModel"
 
 declare var process: {
     env: {

@@ -2,9 +2,8 @@
 
 import { createContext, useContext, useReducer, useEffect, useState, type Dispatch } from 'react';
 
-import { VariantModel } from "../interfaces/ProductModel"
-import { CartModel } from "../models/CartModel"
-// import useCartStorage  from '../services/cart-storage';
+import { VariantModel } from "@/interfaces/ProductModel"
+import { CartModel } from "@/models/CartModel"
 
 export type CARTACTION =
   | { type: "addVariant"; payload: VariantModel }
@@ -13,8 +12,6 @@ export type CARTACTION =
   | { type: "removeVariant"; payload: VariantModel }
   | { type: "setCart"; payload: CartModel }
   | { type: "clear"; };
-
-// const [cartState, getCartStorage, setCartStorage] = useCartStorage();
 
 const CartContext = createContext<CartModel> (new CartModel());
 const CartDispatchContext = createContext<Dispatch<CARTACTION>> (() => {});

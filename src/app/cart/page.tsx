@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link'
 
-import { useCartDispatch, useCart } from '@/app/context/CartContext'
-import { VariantModel } from '../interfaces/ProductModel';
+import { useCartDispatch, useCart } from '@/context/CartContext'
+import { VariantModel } from '@/interfaces/ProductModel';
 
-import ProductRow from '../components/Product/ProductRow';
+import ProductRow from '@/components/Product/ProductRow';
 
 const Cart = () => {
     const cart = useCart();

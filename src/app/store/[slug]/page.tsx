@@ -3,10 +3,10 @@ import React from 'react'
 import { promises as fs } from 'fs';
 import Image from 'next/image'
 
-import AddToCart from '../../components/ProductCard/AddToCart';
+import AddToCart from '@/components/ProductCard/AddToCart';
 
-import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
-import { CartModel } from '../../models/CartModel';
+import { ProductModel, VariantModel } from '@/interfaces/ProductModel';
+import { CartModel } from '@/models/CartModel';
 
 const product = async ({ params }: { params: { slug: string } }) => {
 

@@ -4,8 +4,8 @@ import { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { InputCounter } from 'flowbite';
 
-import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
-import { useCartDispatch, useCart } from '@/app/context/CartContext'
+import { ProductModel, VariantModel } from '@/interfaces/ProductModel';
+import { useCartDispatch, useCart } from '@/context/CartContext'
 
 const ProductRow = ({variant, products, triggerUpdate}: {variant: VariantModel, products: ProductModel[], triggerUpdate: Function}) => {
     const cart = useCart();

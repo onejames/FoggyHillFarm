@@ -1,4 +1,4 @@
-import { VariantModel } from "../interfaces/ProductModel"
+import { VariantModel } from "@/interfaces/ProductModel"
 
 export class CartModel {
     variants: VariantModel[];

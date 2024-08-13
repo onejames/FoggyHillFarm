@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 
 import Link from 'next/link'
 
-import { useCart } from '@/app/context/CartContext'
+import { useCart } from '@/context/CartContext'
 
 const CartWidget = () => {
     const cart = useCart();

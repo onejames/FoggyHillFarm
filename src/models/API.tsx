@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { readdirSync } from 'fs';
 
-import { ProductModel } from '../interfaces/ProductModel';
+import { ProductModel } from '@/interfaces/ProductModel';
 
 export class ProductSource {
 

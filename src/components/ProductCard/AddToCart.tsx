@@ -3,8 +3,8 @@
 import React, { useState, useContext, useRef } from 'react'
 import Link from 'next/link'
 
-import { useCartDispatch } from '@/app/context/CartContext'
-import { ProductModel, VariantModel } from '../../interfaces/ProductModel'
+import { useCartDispatch } from '@/context/CartContext'
+import { ProductModel, VariantModel } from '@/interfaces/ProductModel'
 
 const AddToCart = ({product}: {product: ProductModel}) => {
     const dispatch = useCartDispatch();

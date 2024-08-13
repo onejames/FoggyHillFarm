@@ -1,9 +1,9 @@
 
 import Image from 'next/image'
 
-import FoggyImage from "../../public/img/foggy.jpeg"
+import FoggyImage from "@/public/img/foggy.jpeg"
 
-import FeaturedProducts from './components/Product/FeaturedProducts';
+import FeaturedProducts from '@/components/Product/FeaturedProducts';
 
 export default function Home() {
   return (
