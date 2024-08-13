@@ -45,7 +45,7 @@ const SearchWidget = () => {
       <dialog id="search_modal" ref={searchModal} className="modal">
         <div className="modal-box">
             <label className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" placeholder="Search" ref={searchText} />
+              <input type="text" className="grow border-none" placeholder="Search" ref={searchText} />
               <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
