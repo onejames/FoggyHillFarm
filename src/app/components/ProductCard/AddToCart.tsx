@@ -1,14 +1,13 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useContext, useRef } from 'react'
 import Link from 'next/link'
 
+import { useCartDispatch } from '@/app/context/CartContext'
 import { ProductModel, VariantModel } from '../../interfaces/ProductModel'
-import { CartModel } from '../../models/CartModel';
 
-// const AddToCart = ({ id }: { id: number }) => {
 const AddToCart = ({product}: {product: ProductModel}) => {
-    const cart = new CartModel();
+    const dispatch = useCartDispatch();
 
     const [optionValue, setOptionValue] = useState(0);
     const [cartAction, setCartAction] = useState(0);
@@ -30,7 +29,7 @@ const AddToCart = ({product}: {product: ProductModel}) => {
             }
         })!;
 
-        cart.addVariant(variant);
+        dispatch({ type: 'addVariant', payload: variant });
 
         setTimeout(() => {
             setCartAction(2);

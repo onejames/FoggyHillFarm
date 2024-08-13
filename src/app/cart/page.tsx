@@ -1,16 +1,16 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link'
 
-import { CartModel } from '../models/CartModel';
+import { useCartDispatch, useCart } from '@/app/context/CartContext'
 import { VariantModel } from '../interfaces/ProductModel';
 
 import ProductRow from '../components/Product/ProductRow';
 
 const Cart = () => {
-    // const cart = useMemo(() => new CartModel(), []);
-    const cart = new CartModel();
+    const cart = useCart();
+    const dispatch = useCartDispatch();
 
     const [cartQuantity, setCartQuantity] = useState(cart.calculateCartQuantity());
     const [cartTotal, setCartTotal] = useState(cart.calculateCartTotal());
@@ -20,25 +20,31 @@ const Cart = () => {
 
     const clearConfirm = useRef<HTMLDialogElement>(null);
 
-    const cartUpdate = useCallback((e: Event) => {
+    useEffect(() => {
+        fetch('/api/products')
+          .then((res) => res.json())
+          .then((data) => {
+                setProducts(JSON.parse(data))
+                setLoading(false)
+          })
+    }, [])
+
+    const updateCart = () => {
         setCartQuantity(cart.calculateCartQuantity());
         setCartTotal(cart.calculateCartTotal());
-    }, [cart]);
+    }
 
-    fetch('/api/products', { next: { revalidate: 120 } })
-    .then((res) => res.json())
-    .then((data) => {
-        setProducts(JSON.parse(data))
-        setLoading(false)
-    })
+    const clearCart = () => {
+        dispatch({
+            type: "clear"
+        }); 
+        clearConfirm.current!.close()
+        updateCart();
+    }
 
-    useEffect(function mount() {
-        window.addEventListener('localStorage.cart', cartUpdate);
-
-        return function unMount() {
-            window.removeEventListener("localStorage.cart", cartUpdate);
-        };
-    }, [cartUpdate]);
+    useEffect(() => {
+        updateCart();
+    }, [cart])
 
     if (isLoading) return (
         <div>
@@ -64,9 +70,9 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* { cart.getValue().length > 0 &&
-                            cart.getValue().map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} />)
-                        } */}
+                        { cart.variants.length > 0 &&
+                            cart.variants.map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} triggerUpdate={updateCart} />)
+                        }
                     </tbody>
                     <tfoot>
                         <tr className="font-semibold text-gray-900">
@@ -85,7 +91,7 @@ const Cart = () => {
                     <button onClick={() => { clearConfirm.current!.close() }} type="button" className="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10">
                         No, cancel
                     </button>
-                    <button onClick={() => { cart.clear(); clearConfirm.current!.close() }} className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300">
+                    <button onClick={() => { clearCart() }} className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300">
                         Yes, I&apos;m sure
                     </button>
                 </div>

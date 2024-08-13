@@ -2,29 +2,27 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 
-import { CartModel } from '../models/CartModel';
-
 import Link from 'next/link'
 
+import { useCart } from '@/app/context/CartContext'
+
 const CartWidget = () => {
-    
-    // const cart = useMemo(() => new CartModel(), []);
-    const cart = new CartModel();
+    const cart = useCart();
 
     const [cartQuantity, setCartQuantity] = useState(cart.calculateCartQuantity());
     const [cartTotal, setCartTotal] = useState(cart.calculateCartTotal());
 
-    useEffect(function mount() {
-        const cartUpdate = (ev: Event) => {
+    useEffect(() => {
+        // const cartUpdate = (ev: Event) => {
             setCartQuantity(cart.calculateCartQuantity());
             setCartTotal(cart.calculateCartTotal());
-        };
+        // };
 
-        window.addEventListener('localStorage.cart', cartUpdate);
+        // window.addEventListener('localStorage.cart', cartUpdate);
 
-        return function unMount() {
-            window.removeEventListener("localStorage.cart", cartUpdate);
-        };
+        // return function unMount() {
+        //     window.removeEventListener("localStorage.cart", cartUpdate);
+        // };
     }, [cart]);
 
     return (

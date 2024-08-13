@@ -1,16 +1,15 @@
 "use client"
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 import Image from 'next/image'
 import { InputCounter } from 'flowbite';
 
 import { ProductModel, VariantModel } from '../../interfaces/ProductModel';
-import { CartModel } from '../../models/CartModel'
+import { useCartDispatch, useCart } from '@/app/context/CartContext'
 
-// import useLocalStorage from '../../services/UseLocalStorage';
-
-const ProductRow = ({variant, products}: {variant: VariantModel, products: ProductModel[]}) => {
-    const cart = new CartModel();
+const ProductRow = ({variant, products, triggerUpdate}: {variant: VariantModel, products: ProductModel[], triggerUpdate: Function}) => {
+    const cart = useCart();
+    const dispatch = useCartDispatch();
 
     const qty = useRef<HTMLInputElement>(null);
     const decrement = useRef<HTMLButtonElement>(null);
@@ -35,10 +34,12 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
         minValue: 0,
         maxValue: null, 
         onIncrement: () => {
-            cart.addVariant(variant);
+            dispatch({ type: "addVariant", payload: variant  });
+            triggerUpdate();
         },
         onDecrement: () => {
-            cart.decreaseVariant(variant);
+            dispatch({ type: "decreaseVariant", payload: variant }); 
+            triggerUpdate();
         }
     };
 
@@ -47,11 +48,14 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
         override: true
     };
 
-    const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
+    useEffect(() => {
+        const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
+    }, []);
 
     const remove = (variant: VariantModel) => {
         removeConfirm.current!.close();
-        cart.removeVariant(variant);
+        dispatch({ type: "removeVariant", payload: variant });
+        triggerUpdate();
         return <div></div>
     }
   
