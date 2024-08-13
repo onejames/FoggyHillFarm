@@ -49,8 +49,8 @@ const ProductRow = ({variant, products, triggerUpdate}: {variant: VariantModel, 
     };
 
     useEffect(() => {
-        const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
-    }, []);
+        // const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
+    });
 
     const remove = (variant: VariantModel) => {
         removeConfirm.current!.close();

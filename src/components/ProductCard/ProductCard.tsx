@@ -4,13 +4,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { ProductModel } from '@/interfaces/ProductModel';
-import AddToCart from './AddToCart';
+import AddToCart from '@/components/ProductCard/AddToCart';
 
-const ProductCard = ({product, addFilter = null}: {product: ProductModel, addFilter: Function|null}) => {
-  let onAddFilter = (tag: string) => {tag};
-  if(addFilter instanceof Function) {
-    onAddFilter = (tag: string) => addFilter(tag);
-  }
+const ProductCard = ({product, addFilter}: {product: ProductModel, addFilter: Function}) => {
+  const onAddFilter = (tag: string) => addFilter(tag);
 
   const date: Date = new Date();
   date.setDate(date.getDate() - 28);

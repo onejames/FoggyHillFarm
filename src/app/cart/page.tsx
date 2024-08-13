@@ -27,7 +27,7 @@ const Cart = () => {
                 setProducts(JSON.parse(data))
                 setLoading(false)
           })
-    }, [])
+    })
 
     const updateCart = () => {
         setCartQuantity(cart.calculateCartQuantity());
@@ -44,6 +44,7 @@ const Cart = () => {
 
     useEffect(() => {
         updateCart();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cart])
 
     if (isLoading) return (
