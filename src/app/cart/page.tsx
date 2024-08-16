@@ -4,30 +4,22 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link'
 
 import { useCartDispatch, useCart } from '@/context/CartContext'
+import { useProducts } from '@/services/fetcher';
 import { VariantModel } from '@/interfaces/ProductModel';
 
 import ProductRow from '@/components/Product/ProductRow';
+import Loading from "@/components/Feedback/Loading";
 
 const Cart = () => {
+    const {products, isLoading} = useProducts();
+
     const cart = useCart();
     const dispatch = useCartDispatch();
 
     const [cartQuantity, setCartQuantity] = useState(cart.calculateCartQuantity());
     const [cartTotal, setCartTotal] = useState(cart.calculateCartTotal());
 
-    const [products, setProducts] = useState([])
-    const [isLoading, setLoading] = useState(true)
-
     const clearConfirm = useRef<HTMLDialogElement>(null);
-
-    useEffect(() => {
-        fetch('/api/products')
-          .then((res) => res.json())
-          .then((data) => {
-                setProducts(JSON.parse(data))
-                setLoading(false)
-          })
-    })
 
     const updateCart = () => {
         setCartQuantity(cart.calculateCartQuantity());
@@ -47,14 +39,9 @@ const Cart = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cart])
 
-    if (isLoading) return (
-        <div>
-            <span className="loading loading-ball loading-xs"></span>
-            <span className="loading loading-ball loading-sm"></span>
-            <span className="loading loading-ball loading-md"></span>
-            <span className="loading loading-ball loading-lg"></span>
-        </div>
-    )
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <div>

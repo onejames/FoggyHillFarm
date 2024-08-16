@@ -2,29 +2,18 @@
 
 import { useState, useEffect } from "react"
 
-import { promises as fs } from 'fs';
+import { useProducts } from '@/services/fetcher';
 
+import Loading from "@/components/Feedback/Loading";
 import ProductCard from '@/components/ProductCard/ProductCard'
 
 import { ProductModel } from '@/interfaces/ProductModel';
-import { ProductSource } from '@/models/API';
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const {products, isLoading} = useProducts();
 
   const [filteredProducts, setFilteredProducts] = useState<ProductModel[]>([]);
-  // const [productFilter, setProductFilter] = useState(['Jam', 'Honey']);
   const [productFilter, setProductFilter] = useState<string[]>([]);
-
-  useEffect(() => {
-    console.log('produts');
-    fetch('/api/products')
-    .then((res) => res.json())
-    .then((data) => {
-      setProducts(JSON.parse(data));
-      setFilteredProducts(JSON.parse(data));
-    })
-  }, []);
 
   function addFilter (tag: string) {
     if (!productFilter.includes(tag)) {
@@ -62,9 +51,20 @@ const Products = () => {
     setFilteredProducts(processedProducts);
   }
 
+  useEffect(() => {
+    if (!isLoading) {
+      setFilteredProducts(products);
+    }
+  }, [isLoading]);
+
+  if (isLoading) {
+      return <Loading />
+  }
+
   return (
     <div>
       <h2 className='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl'>Products</h2>
+
       { productFilter.length > 0 &&
           <div className="align-middle">
             Applied Filters:
