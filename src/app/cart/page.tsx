@@ -16,28 +16,14 @@ const Cart = () => {
     const cart = useCart();
     const dispatch = useCartDispatch();
 
-    const [cartQuantity, setCartQuantity] = useState(cart.calculateCartQuantity());
-    const [cartTotal, setCartTotal] = useState(cart.calculateCartTotal());
-
     const clearConfirm = useRef<HTMLDialogElement>(null);
-
-    const updateCart = () => {
-        setCartQuantity(cart.calculateCartQuantity());
-        setCartTotal(cart.calculateCartTotal());
-    }
 
     const clearCart = () => {
         dispatch({
             type: "clear"
         }); 
         clearConfirm.current!.close()
-        updateCart();
     }
-
-    useEffect(() => {
-        updateCart();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [cart])
 
     if (isLoading) {
         return <Loading />
@@ -59,14 +45,14 @@ const Cart = () => {
                     </thead>
                     <tbody>
                         { cart.variants.length > 0 &&
-                            cart.variants.map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} triggerUpdate={updateCart} />)
+                            cart.variants.map((variant: VariantModel) => <ProductRow key={variant.id} variant={variant} products={products} />)
                         }
                     </tbody>
                     <tfoot>
                         <tr className="font-semibold text-gray-900">
-                            <td colSpan={4} className="px-6 py-3">{cartQuantity} Items in cart</td>
+                            <td colSpan={4} className="px-6 py-3">{cart.calculateCartQuantity()} Items in cart</td>
                             <th scope="row" className="px-6 py-3 text-base">Total: </th>
-                            <td className="px-6 py-3">{cart.formatCurrency(cartTotal)}</td>
+                            <td className="px-6 py-3">{cart.formatCurrency(cart.calculateCartTotal())}</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -85,10 +71,10 @@ const Cart = () => {
                 </div>
             </dialog>
 
-            { cartTotal != 0 &&
+            { cart.calculateCartTotal() != 0 &&
                 <button className='btn btn-primary btn-md m-3' onClick={ () => { clearConfirm.current!.showModal() }}>Clear Cart</button>
             }
-            { cartTotal == 0 &&
+            { cart.calculateCartTotal() == 0 &&
                 <div>
                     <div className="divider my-10">Your cart is empty</div>
                     <p className="text-center mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48">Head over to the <Link className="font-medium text-blue-600 underline hover:no-underline" href="/store" >store</Link> to browse our products!</p>

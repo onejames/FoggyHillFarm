@@ -29,7 +29,6 @@ export function CartProvider({ children }: any) {
             const cartObject = JSON.parse( cartStorage ) as CartModel;
 
             if (cartObject) {
-                console.log('loading cart');
                 dispatch({
                     type: 'setCart',
                     payload: new CartModel(cartObject.variants, cartObject.status, cartObject.code)
@@ -56,7 +55,6 @@ export function useCartDispatch() {
 }
 
 function cartReducer(cart: CartModel, action: CARTACTION) {
-    console.log(action);
     switch (action.type) {
         case 'addVariant': {
             modifyVariant(cart, action.payload);
@@ -84,8 +82,11 @@ function cartReducer(cart: CartModel, action: CARTACTION) {
             break;
         }
     }
-    localStorage.setItem( 'cart', JSON.stringify( cart ) );
-    return cart;
+
+    const newCart = new CartModel(cart.variants, cart.status, cart.code)
+
+    localStorage.setItem( 'cart', JSON.stringify( newCart ) );
+    return newCart;
 }
 
 function modifyVariant (cart: CartModel, variant: VariantModel, add: boolean = true, remove: boolean = false) {
@@ -112,7 +113,6 @@ function modifyVariant (cart: CartModel, variant: VariantModel, add: boolean = t
         variant.ammountInCart = 1;
         cart.variants.push(variant);
     }
-console.log('cartContext cart');
-console.log(cart);
+
     return cart;
 }

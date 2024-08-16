@@ -7,7 +7,7 @@ import { InputCounter } from 'flowbite';
 import { ProductModel, VariantModel } from '@/interfaces/ProductModel';
 import { useCartDispatch, useCart } from '@/context/CartContext'
 
-const ProductRow = ({variant, products, triggerUpdate}: {variant: VariantModel, products: ProductModel[], triggerUpdate: Function}) => {
+const ProductRow = ({variant, products}: {variant: VariantModel, products: ProductModel[]}) => {
     const cart = useCart();
     const dispatch = useCartDispatch();
 
@@ -35,11 +35,9 @@ const ProductRow = ({variant, products, triggerUpdate}: {variant: VariantModel, 
         maxValue: null, 
         onIncrement: () => {
             dispatch({ type: "addVariant", payload: variant  });
-            triggerUpdate();
         },
         onDecrement: () => {
             dispatch({ type: "decreaseVariant", payload: variant }); 
-            triggerUpdate();
         }
     };
 
@@ -49,13 +47,15 @@ const ProductRow = ({variant, products, triggerUpdate}: {variant: VariantModel, 
     };
 
     useEffect(() => {
-        // const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
+        const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
     });
+
+    useEffect(() => {
+    }), [cart];
 
     const remove = (variant: VariantModel) => {
         removeConfirm.current!.close();
         dispatch({ type: "removeVariant", payload: variant });
-        triggerUpdate();
         return <div></div>
     }
   
