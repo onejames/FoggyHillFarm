@@ -47,7 +47,7 @@ const ProductRow = ({variant, products}: {variant: VariantModel, products: Produ
     };
 
     useEffect(() => {
-        const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
+        // const counterInput = new InputCounter(qty.current, increment.current, decrement.current, options, instanceOptions);
     });
 
     useEffect(() => {
