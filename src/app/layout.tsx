@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
 
     return (
-        <html lang="en" data-theme="fantsay">
+        <html lang="en" data-theme="fantsay" suppressHydrationWarning={true}>
             <body className="flex justify-center max-w-screen-xl flex-col mx-auto" >
                 <CartProvider>
 

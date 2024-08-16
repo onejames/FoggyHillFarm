@@ -32,7 +32,7 @@ const ProductCard = ({product, addFilter}: {product: ProductModel, addFilter: Fu
               
             </h2>
 
-            <p className='max-h-24 text-wrap truncate' dangerouslySetInnerHTML={{__html: product.description}}></p>
+            <div className='max-h-24 text-wrap truncate' dangerouslySetInnerHTML={{__html: product.description}}></div>
 
             <div className="card-actions justify-end">
               {product.tags.map( (tag) => 
